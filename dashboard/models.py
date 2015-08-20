@@ -20,3 +20,7 @@ class CrawledPage(CrawledResource):
 class CrawledSite(CrawledResource):
     careers_page = models.ForeignKey(CrawledPage)
     domain_name = models.CharField(max_length=50, null=True)
+
+
+class CrawlStartPoint(CrawledResource):
+    is_active = models.BooleanField(default=True)
