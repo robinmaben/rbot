@@ -1,2 +1,2 @@
 # rbot
-Simple crawler to get leads of potential clients for sourcing team
+Simple crawler to get pages of interest based on keywords
