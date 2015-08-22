@@ -1,10 +1,10 @@
 # r-bot
-Simple crawler to find pages of interest based on provided keywords and starting points
+Simple, low-ceremony crawler to find pages of interest based on provided keywords and starting points
 
 
-Algorithm -
+## Algorithm -
 
-CrawlList = []
+`CrawlList = []
 InterestingList = []
 
 StartingPoints = []
@@ -44,4 +44,4 @@ Analyze(page):
 
 
 Relaunch():
-    #
+    #`
