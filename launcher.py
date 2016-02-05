@@ -1,45 +1,13 @@
-import requests
-from BeautifulSoup import BeautifulSoup
+import sys
 
-pending_links = []
-crawled_links = []
+from repo import add_to_queue
+from tasks import start_crawling
 
-
-def crawl(url):
-    print "Getting {}".format(url)
-    response = ''
-    try:
-        response = requests.get(url)
-        print 'Response {}'.format(response.status_code)
-    except requests.ConnectionError:
-        print "Failed {}".format(url)
-
-    pending_links.remove(url)
-    crawled_links.append(url)
-
-    links = BeautifulSoup(response.content).findAll("a")
-
-    for link in links:
-        try:
-            url = link['href']
-            add_to_queue(url)
-        except KeyError:
-            continue
-
-
-def add_to_queue(link):
-    if link not in pending_links:
-        pending_links.append(link)
-
-
-def start_crawling():
-    for url in pending_links:
-        crawl(url)
-
-    if len(pending_links) < 1000:
-        start_crawling()
-
+MAX_DEPTH = 4
 
 if __name__ == "__main__":
-    pending_links.append('http://yclist.com/')
-    start_crawling()
+    starting_link = sys.argv[1] if len(sys.argv) > 1 else "yclist.com"
+    depth_to_crawl = int(sys.argv[2]) if len(sys.argv) > 2 else MAX_DEPTH
+
+    add_to_queue(starting_link)
+    start_crawling(depth_to_crawl)
