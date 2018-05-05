@@ -1,5 +1,5 @@
 # r-bot
-Simple, low-ceremony crawler to find pages of interest based on provided keywords and starting points
+Simple, low-ceremony crawler to find pages of interest based on provided keywords and starting points - and report them to a Slack message / channel.
 
 
 ### Algorithm -
